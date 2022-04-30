@@ -1,0 +1,826 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/13/2021 9:13:32 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-M3DO28EP"
+  DTS:CreatorName="LAPTOP-M3DO28EP\Pasan's Pc"
+  DTS:DTSID="{3C527B11-87D4-4E39-83FF-0156988576AC}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.1601.5"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="DW_Test"
+  DTS:PackageType="5"
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{1723F5A4-8AE1-459A-AD25-61B97BD251CD}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-M3DO28EP.DWBI_Assignment1_Staging]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{A32BF88E-7B6E-424A-BCEC-50D9D28BE09D}"
+      DTS:ObjectName="LAPTOP-M3DO28EP.DWBI_Assignment1_Staging">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=LAPTOP-M3DO28EP;Initial Catalog=DWBI_Assignment1_Staging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-M3DO28EP.DWBI_test]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{5DDF348A-DFCF-4806-B3D8-9513CA6D9C57}"
+      DTS:ObjectName="LAPTOP-M3DO28EP.DWBI_test">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=LAPTOP-M3DO28EP;Initial Catalog=DWBI_test;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\BeerStyle Test"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{622AC3D5-A4BB-41C4-B8C8-8B5F90DCD224}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="BeerStyle Test"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\BeerStyle Test\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[test_styles]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\BeerStyle Test\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-M3DO28EP.DWBI_test]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-M3DO28EP.DWBI_test]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\BeerStyle Test\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\BeerStyle Test\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[style_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="16"
+                      cachedName="style_id"
+                      externalMetadataColumnId="Package\BeerStyle Test\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[style_id]"
+                      lineageId="Package\BeerStyle Test\Stg BeerStyles.Outputs[OLE DB Source Output].Columns[style_id]" />
+                    <inputColumn
+                      refId="Package\BeerStyle Test\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[beer_style]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="beer_style"
+                      externalMetadataColumnId="Package\BeerStyle Test\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[beer_style]"
+                      lineageId="Package\BeerStyle Test\Stg BeerStyles.Outputs[OLE DB Source Output].Columns[beer_style]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\BeerStyle Test\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[style_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="16"
+                      name="style_id" />
+                    <externalMetadataColumn
+                      refId="Package\BeerStyle Test\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[beer_style]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="beer_style" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\BeerStyle Test\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\BeerStyle Test\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\BeerStyle Test\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\BeerStyle Test\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\BeerStyle Test\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\BeerStyle Test\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\BeerStyle Test\Stg BeerStyles"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Stg BeerStyles"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT TOP 5 [style_id]
+      ,[beer_style]
+  FROM [DWBI_Assignment1_Staging].[dbo].[StgStyle]</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\BeerStyle Test\Stg BeerStyles.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-M3DO28EP.DWBI_Assignment1_Staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-M3DO28EP.DWBI_Assignment1_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\BeerStyle Test\Stg BeerStyles.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\BeerStyle Test\Stg BeerStyles.Outputs[OLE DB Source Output].Columns[style_id]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\BeerStyle Test\Stg BeerStyles.Outputs[OLE DB Source Output].ExternalColumns[style_id]"
+                      length="16"
+                      lineageId="Package\BeerStyle Test\Stg BeerStyles.Outputs[OLE DB Source Output].Columns[style_id]"
+                      name="style_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\BeerStyle Test\Stg BeerStyles.Outputs[OLE DB Source Output].Columns[beer_style]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\BeerStyle Test\Stg BeerStyles.Outputs[OLE DB Source Output].ExternalColumns[beer_style]"
+                      length="255"
+                      lineageId="Package\BeerStyle Test\Stg BeerStyles.Outputs[OLE DB Source Output].Columns[beer_style]"
+                      name="beer_style"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\BeerStyle Test\Stg BeerStyles.Outputs[OLE DB Source Output].ExternalColumns[style_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="16"
+                      name="style_id" />
+                    <externalMetadataColumn
+                      refId="Package\BeerStyle Test\Stg BeerStyles.Outputs[OLE DB Source Output].ExternalColumns[beer_style]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="beer_style" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\BeerStyle Test\Stg BeerStyles.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\BeerStyle Test\Stg BeerStyles.Outputs[OLE DB Source Error Output].Columns[style_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="16"
+                      lineageId="Package\BeerStyle Test\Stg BeerStyles.Outputs[OLE DB Source Error Output].Columns[style_id]"
+                      name="style_id" />
+                    <outputColumn
+                      refId="Package\BeerStyle Test\Stg BeerStyles.Outputs[OLE DB Source Error Output].Columns[beer_style]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\BeerStyle Test\Stg BeerStyles.Outputs[OLE DB Source Error Output].Columns[beer_style]"
+                      name="beer_style" />
+                    <outputColumn
+                      refId="Package\BeerStyle Test\Stg BeerStyles.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\BeerStyle Test\Stg BeerStyles.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\BeerStyle Test\Stg BeerStyles.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\BeerStyle Test\Stg BeerStyles.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\BeerStyle Test.Paths[OLE DB Source Output]"
+              endId="Package\BeerStyle Test\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\BeerStyle Test\Stg BeerStyles.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Customer Test"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{0F1B634C-BB49-4F05-80EB-79470D44E3FE}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Customer Test"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Customer Test\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[test_customer]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Customer Test\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-M3DO28EP.DWBI_test]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-M3DO28EP.DWBI_test]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Customer Test\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Customer Test\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[cust_no]"
+                      cachedDataType="i4"
+                      cachedName="cust_no"
+                      externalMetadataColumnId="Package\Customer Test\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[cust_no]"
+                      lineageId="Package\Customer Test\Stg Customer.Outputs[OLE DB Source Output].Columns[cust_no]" />
+                    <inputColumn
+                      refId="Package\Customer Test\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[cust_name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="cust_name"
+                      externalMetadataColumnId="Package\Customer Test\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[cust_name]"
+                      lineageId="Package\Customer Test\Stg Customer.Outputs[OLE DB Source Output].Columns[cust_name]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Customer Test\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[cust_no]"
+                      dataType="i4"
+                      name="cust_no" />
+                    <externalMetadataColumn
+                      refId="Package\Customer Test\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[cust_name]"
+                      dataType="wstr"
+                      length="50"
+                      name="cust_name" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Customer Test\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Customer Test\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Customer Test\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Customer Test\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Customer Test\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Customer Test\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Customer Test\Stg Customer"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Stg Customer"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT TOP 5 [cust_no]
+      ,[cust_name]
+  FROM [DWBI_Assignment1_Staging].[dbo].[StgCustomers ]</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Customer Test\Stg Customer.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-M3DO28EP.DWBI_Assignment1_Staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-M3DO28EP.DWBI_Assignment1_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Customer Test\Stg Customer.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Customer Test\Stg Customer.Outputs[OLE DB Source Output].Columns[cust_no]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Customer Test\Stg Customer.Outputs[OLE DB Source Output].ExternalColumns[cust_no]"
+                      lineageId="Package\Customer Test\Stg Customer.Outputs[OLE DB Source Output].Columns[cust_no]"
+                      name="cust_no"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Customer Test\Stg Customer.Outputs[OLE DB Source Output].Columns[cust_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Customer Test\Stg Customer.Outputs[OLE DB Source Output].ExternalColumns[cust_name]"
+                      length="50"
+                      lineageId="Package\Customer Test\Stg Customer.Outputs[OLE DB Source Output].Columns[cust_name]"
+                      name="cust_name"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Customer Test\Stg Customer.Outputs[OLE DB Source Output].ExternalColumns[cust_no]"
+                      dataType="i4"
+                      name="cust_no" />
+                    <externalMetadataColumn
+                      refId="Package\Customer Test\Stg Customer.Outputs[OLE DB Source Output].ExternalColumns[cust_name]"
+                      dataType="wstr"
+                      length="50"
+                      name="cust_name" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Customer Test\Stg Customer.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Customer Test\Stg Customer.Outputs[OLE DB Source Error Output].Columns[cust_no]"
+                      dataType="i4"
+                      lineageId="Package\Customer Test\Stg Customer.Outputs[OLE DB Source Error Output].Columns[cust_no]"
+                      name="cust_no" />
+                    <outputColumn
+                      refId="Package\Customer Test\Stg Customer.Outputs[OLE DB Source Error Output].Columns[cust_name]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Customer Test\Stg Customer.Outputs[OLE DB Source Error Output].Columns[cust_name]"
+                      name="cust_name" />
+                    <outputColumn
+                      refId="Package\Customer Test\Stg Customer.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Customer Test\Stg Customer.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Customer Test\Stg Customer.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Customer Test\Stg Customer.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Customer Test.Paths[OLE DB Source Output]"
+              endId="Package\Customer Test\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Customer Test\Stg Customer.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{787C6674-44C1-4F28-9953-37CD0AEBF290}"
+      DTS:From="Package\Customer Test"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\BeerStyle Test" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="146.4,41.6"
+          Id="Package\Customer Test"
+          TopLeft="344.571434439445,52.6117654437425" />
+        <NodeLayout
+          Size="146.4,41.6"
+          Id="Package\BeerStyle Test"
+          TopLeft="386.285720864121,140.705884326288" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="417.771434439445,94.2117654437425">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="41.7142864246758,46.4941188825456"
+              Start="0,0"
+              End="41.7142864246758,38.9941188825456">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.2470594412728" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.2470594412728"
+                    Point2="0,23.2470594412728"
+                    Point3="4,23.2470594412728" />
+                  <mssgle:LineSegment
+                    End="37.7142864246758,23.2470594412728" />
+                  <mssgle:CubicBezierSegment
+                    Point1="37.7142864246758,23.2470594412728"
+                    Point2="41.7142864246758,23.2470594412728"
+                    Point3="41.7142864246758,27.2470594412728" />
+                  <mssgle:LineSegment
+                    End="41.7142864246758,38.9941188825456" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Customer Test">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="142.4,41.6"
+          Id="Package\Customer Test\Stg Customer"
+          TopLeft="341.714291533645,42.2117652978864" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Customer Test\OLE DB Destination"
+          TopLeft="430.285721613436,128.470590037046" />
+        <EdgeLayout
+          Id="Package\Customer Test.Paths[OLE DB Source Output]"
+          TopLeft="412.914291533645,83.8117652978864">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="102.571430079791,44.6588247391592"
+              Start="0,0"
+              End="102.571430079791,37.1588247391592">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.3294123695796" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.3294123695796"
+                    Point2="0,22.3294123695796"
+                    Point3="4,22.3294123695796" />
+                  <mssgle:LineSegment
+                    End="98.571430079791,22.3294123695796" />
+                  <mssgle:CubicBezierSegment
+                    Point1="98.571430079791,22.3294123695796"
+                    Point2="102.571430079791,22.3294123695796"
+                    Point3="102.571430079791,26.3294123695796" />
+                  <mssgle:LineSegment
+                    End="102.571430079791,37.1588247391592" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Customer Test\Stg Customer">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Customer Test\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\BeerStyle Test">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="146.4,41.6"
+          Id="Package\BeerStyle Test\Stg BeerStyles"
+          TopLeft="460.8,56.8" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\BeerStyle Test\OLE DB Destination"
+          TopLeft="514.4,187.2" />
+        <EdgeLayout
+          Id="Package\BeerStyle Test.Paths[OLE DB Source Output]"
+          TopLeft="534,98.4">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="65.6,88.8"
+              Start="0,0"
+              End="65.6,81.3">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.4" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,40.4"
+                    Point2="0,44.4"
+                    Point3="4,44.4" />
+                  <mssgle:LineSegment
+                    End="61.6,44.4" />
+                  <mssgle:CubicBezierSegment
+                    Point1="61.6,44.4"
+                    Point2="65.6,44.4"
+                    Point3="65.6,48.4" />
+                  <mssgle:LineSegment
+                    End="65.6,81.3" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\BeerStyle Test\Stg BeerStyles">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\BeerStyle Test\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
